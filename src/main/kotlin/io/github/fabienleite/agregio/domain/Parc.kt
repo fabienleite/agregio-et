@@ -4,7 +4,7 @@ import java.util.*
 
 class Parc(
     type: String,
-    puissanceMaximale: Int
+    puissanceMaximaleEnMW: Int
 ) {
     val id: UUID = UUID.randomUUID()
 
@@ -14,8 +14,8 @@ class Parc(
         throw TypeNonListeException()
     }
 
-    val puissanceMaximaleEnMW: Int = when (puissanceMaximale > 0) {
-        true -> puissanceMaximale
+    val puissanceMaximaleEnMW: Int = when (puissanceMaximaleEnMW > 0) {
+        true -> puissanceMaximaleEnMW
         false -> throw PuissanceNegativeException()
     }
 }
