@@ -11,11 +11,11 @@ class Parc(
     val type: TypeDeParc = try {
         TypeDeParc.valueOf(type)
     } catch (exception: IllegalArgumentException) {
-        throw TypeNonListéException()
+        throw TypeNonListeException()
     }
 
     val puissanceMaximaleEnMW: Int = when (puissanceMaximale > 0) {
         true -> puissanceMaximale
-        false -> throw PuissanceNégativeException()
+        false -> throw PuissanceNegativeException()
     }
 }

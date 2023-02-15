@@ -9,7 +9,7 @@ import io.mockk.*
 class CréerParcTest : StringSpec({
 
     val parcRepository = mockk<ParcRepository>()
-    val créerParc = CréerParc(parcRepository)
+    val creerParc = CreerParc(parcRepository)
 
     "devrait créer un parc s'il est configuré avec toutes les données" {
         // Given
@@ -20,7 +20,7 @@ class CréerParcTest : StringSpec({
         every { parcRepository.sauvegarder(parc = capture(parcSauvegardé)) } just runs
 
         // When
-        val uuidCréé = créerParc.execute(typeSolaire, puissanceMax)
+        val uuidCréé = creerParc.execute(typeSolaire, puissanceMax)
 
         // Then
         verify(exactly = 1) { parcRepository.sauvegarder(any()) }
@@ -35,8 +35,8 @@ class CréerParcTest : StringSpec({
         val typeSolaire = "SOLAIRE"
 
         // When, Then
-        shouldThrow<PuissanceNégativeException> {
-            créerParc.execute(typeSolaire, puissanceMaxNégative)
+        shouldThrow<PuissanceNegativeException> {
+            creerParc.execute(typeSolaire, puissanceMaxNégative)
         }
     }
 
@@ -46,8 +46,8 @@ class CréerParcTest : StringSpec({
         val typeSolaire = "HÉLIUM"
 
         // When, Then
-        shouldThrow<TypeNonListéException> {
-            créerParc.execute(typeSolaire, puissanceMaxNégative)
+        shouldThrow<TypeNonListeException> {
+            creerParc.execute(typeSolaire, puissanceMaxNégative)
         }
     }
 })
